@@ -1,0 +1,17 @@
+-
+ name: install tomact
+ hosts: localhost
+ tasks:
+   - name: install the httpd server
+     yum:
+       name: "{{ item }}"
+       state: present
+     loop:
+       - httpd
+       - wget
+       - tree
+
+   - name: start the serverice
+     service:
+       name: httpd
+       state: started
